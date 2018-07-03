@@ -1,14 +1,22 @@
 
 RUNNING=true
+ERROR_TEXT=""
+TEST_NAME=""
 
-runTests() {
-	. ./tests/testEin
-	. ./tests/testPiHole
+sendError() {
+	./sendMessage.sh "Error testing $TEST_NAME: $ERROR_TEXT"
+}
+
+runTest() {
+	TEST_NAME=$1
+	echo "Testing: $TEST_NAME"
+	. ./tests/test${TEST_NAME}.sh || sendError
 }
 
 
 while [ $RUNNING == true ]
 do
-	runTests		
+	runTest Ein		
+	runTest PiHole
 	sleep 600
 done
