@@ -1,6 +1,8 @@
+. ./getCredential.sh pushover_app_key
+. ./getCredential.sh pushover_user_key
 
 curl -s \
-	--form-string "token=adbeojuxshbtrxbofycsrqrxftrsm2" \
-	--form-string "user=ub3n3zux1d5gi1mw83jpt1xz2rtctc" \
+	--form-string "token=$PUSHOVER_APP_KEY" \
+	--form-string "user=$PUSHOVER_USER_KEY" \
 	--form-string "message=$1" \
 	https://api.pushover.net/1/messages.json
