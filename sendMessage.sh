@@ -6,3 +6,4 @@ curl -s \
 	--form-string "user=$PUSHOVER_USER_KEY" \
 	--form-string "message=$1" \
 	https://api.pushover.net/1/messages.json
+echo Message Sent

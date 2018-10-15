@@ -1,6 +1,5 @@
-./getCredential.sh ip_ein
-ping $ip_ein
+source getCredential.sh ip_ein
+ping $IP_EIN -c 1
 
-if [[ $? =~ 0 ]]; then
-	echo "hi"
-fi
+ERROR_TEXT="Could not reach Ein"
+return $?

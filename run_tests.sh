@@ -3,11 +3,12 @@ RUNNING=true
 ERROR_TEXT=""
 TEST_NAME=""
 
-sendError() {
+function sendError {
 	./sendMessage.sh "Error testing $TEST_NAME: $ERROR_TEXT"
 }
 
-runTest() {
+function runTest {
+	echo "-----------------------"
 	TEST_NAME=$1
 	echo "Testing: $TEST_NAME"
 	. ./tests/test${TEST_NAME}.sh || sendError
@@ -17,6 +18,7 @@ runTest() {
 while [ $RUNNING == true ]
 do
 	runTest Ein		
-	runTest PiHole
+	runTest Internet
+	# runTest PiHole
 	sleep 300
 done
